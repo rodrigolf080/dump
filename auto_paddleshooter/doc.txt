@@ -1,0 +1,2 @@
+# aiPaddleShooter
+Example that automation is not the same as AI for point provind purposes.

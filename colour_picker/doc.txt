@@ -1,0 +1,2 @@
+Colour game for users to train their RGB colour picking skills.
+"Version 1.0" - the only purpose of this is to train colour:code assossiation 
