@@ -1,0 +1,29 @@
+body {
+	background-color: #333333;
+	margin: 0;
+	font-family: "Montserrat", "Avenir";
+
+}
+
+h1 {
+	text-align: center;
+	line-height: 1.5;
+	font-weight: bold;
+	color: white;
+	background: #ff5e13;
+	margin: 0;
+	text-transform: uppercase;
+	padding: 32px 0;
+	margin: 0;
+}
+
+.canvas {
+	border: 3px solid #ffffff;
+}
+
+.container {
+	margin-left: 35rem;
+	margin-right: 35rem;
+	margin-bottom: 5rem;
+	margin-top: 5rem;
+}

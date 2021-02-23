@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> game </title>
+</head>
+<body style="background-color: #333333;text-align: center;">
+    <canvas
+    id="GameCanvas",
+    width="400px",
+    height="400px"
+    style="background-color: #ffffff; 
+    border: 1rem solid #fd6a02;
+    margin-top: 5rem;">
+    </canvas>
+    <h1 style="color: #ffffff;"> 
+        Commands:
+    </h1>
+    <h1 style="color: #fd6a02;">
+        p : enable painting
+        <br>
+        c : clear canvas
+    </h1>
+</body>
+<script>
+
+    // CANVAS
+    // Get canvas element and canvas' context to draw on
+    // Set painting colour to default as black and initialise painting variable
+    const canvas = document.getElementById("GameCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#000000";
+    let painting;
+
+    // BUILD BOARD FOR EASIER AI RECOGNITION
+    // Canvas board = 100 by 100 squares of 4x4=16 each
+    // rows = canvas.width / scale; // = 100 rows
+    // columns = canvas.height / scale // = 100 columns 
+    const scale= 10; // each square unit ahs 4units of side
+    // for each row
+    // for each column
+    // push tuple (i, j) into an array
+    const scaleArray = [];
+    let i, j;
+
+    for (i=0; i < canvas.width; i += scale){
+            for (j=0; j < canvas.height; j += scale){
+                scaleArray.push([i, j]);    
+            }
+    }
+
+    // USER COMMANDS
+    // Catch command presses
+    window.addEventListener("keydown", keyDownHandler);
+    // Command control panel 
+    function keyDownHandler(event){
+        if (event.key == 'p'){
+            console.log("Painting is enabled")
+            painting = !painting
+        }
+        if (event.key == 'c'){
+            clearCanvas();
+            console.log("Canvas is clear.")
+        }
+    }
+
+    // MOUSE PAINTING MECHANISM
+    // For each row and column if the mouse is on top of that unit, paint in black
+    // checkMouse -> Detect mouse movement over canvas and paint that unit in black
+    // check if mouse over canvas get mouse position and paint the underneath square
+    // Create array with each unit xy positions to draw
+    canvas.addEventListener("mousemove", mouseMoveHandler);
+
+    let relativeX, relativeY, unit;
+
+    function mouseMoveHandler(event) {
+        // Get mouse x and y position
+        relativeX = event.clientX - canvas.offsetLeft - 20;
+        relativeY = event.clientY - canvas.offsetTop - 20;
+        // Go over the unit array and find out which unit is the mousing sitting over, and paint it
+        if (painting){
+            for (pair in scaleArray){
+                unit = scaleArray[pair];
+                if ( (((relativeX >= unit[0]) && (relativeX < unit[0] + scale)) && ((relativeY >= unit[1]) && (relativeY < unit[1] + scale))) ) {
+                    ctx.fillRect(unit[0], unit[1], scale, scale);
+                }
+            }
+        }
+    }
+    
+    // CLEAR CANVAS
+    function clearCanvas(){
+        // clear function to clean the canvas 
+        painting = false;
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+    }
+
+    // MAIN
+    // Define init function to start program
+    function init(){
+        clearCanvas;
+        painting = false;
+        // console.log commands
+        console.log("Commands:\np : enable painting\nc : Clear canvas ")
+    }
+    // Start program
+    init();
+
+
+
+</script>
+</html>

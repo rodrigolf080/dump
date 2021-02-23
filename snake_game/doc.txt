@@ -1,0 +1,3 @@
+# snakeGamejs
+
+Basic game to learn js vanilla, html and css
