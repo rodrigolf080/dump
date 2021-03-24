@@ -1,2 +1,2 @@
 # dump
-A dump repository for random projects.
+A repository for small projects.
