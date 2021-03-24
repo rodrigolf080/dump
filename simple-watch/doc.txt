@@ -1,0 +1,15 @@
+# simpleWatch
+--> Implementation of a simple watch with 2 buttons - mode and set - giving the user two and only two options to change the state of the watch at any time.
+----
+Watch Commands:
+----
+-- Mode(1) - option 1
+-- Set(2) - option 2
+-- Quit(0) - exit program
+
+
+Makefile Commands:
+----
+-- make :: compile source code
+-- make run :: execute program
+-- make clean :: clean binaries
