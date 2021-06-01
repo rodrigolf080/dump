@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/python
 from getpass import getpass
 from subprocess import Popen, DEVNULL
 from os.path import exists
